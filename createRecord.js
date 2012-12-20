@@ -33,9 +33,13 @@ var endEmail = "ben@concussionjs.com"
 var vcards = "";
 
 // Set up browser object, pointing to the local proxy
+
+
 var browser = new Browser();
 browser.proxy="http://localhost:80";
 browser.debug=true;
+browser.silent=false;
+browser.site="testdrive.local-concussionjs.com/getPage?id=testId&pagename=testPage"
 
 // setUp and cleanUp variables
 var tempPageId="";
@@ -44,7 +48,7 @@ function setUp()
 {
 	nta.debug = true;
 	nta.initiateDB(function(db){
-		var testPage = { "id" : "testId", "html" : "<html>\r\n<head>\r\n    <title>Contacts</title>\r\n    <meta charset=\"utf-8\">\r\n\t<link rel=\"stylesheet\" href=\"contacts-style.css\">\r\n</head>\r\n\t<body>\r\n        <form data-bind=\"submit:contacts_create\">\r\n        <div class=\"new-contact\">\r\n\t\t\t<input name=\"fn\" class=\"fn\" type=\"text\" placeholder=\"Contact Name\" data-bind=\"value:contacts_Name\">\r\n\t\t\t<input name=\"phone\" class=\"phone\" type=\"text\" placeholder=\"Phone Number\" data-bind=\"value:contacts_phoneNumber\">\r\n\t\t\t<input name=\"email\" class=\"email\" type=\"text\" placeholder=\"Email Address\" data-bind=\"value:contacts_emailAddress\">\r\n            <button type=\"submit\" value=\"Save\">Add record</button>    \r\n\t    </div>\r\n        </form>\r\n\t    <div id=\"contacts\" data-bind=\"foreach:contacts\">\r\n        \t<div class=\"vcard\" data-bind=\"attr:{id:id}\">\r\n    \t\t\t<input class=\"fn\" data-bind=\"value:Name,attr:{name:id() +'_fn'}\">\r\n    \t\t\t<input class=\"phone\" data-bind=\"value:phoneNumber,attr:{name:id() +'_phone'}\">\r\n                <input class=\"email\" data-bind=\"value:emailAddress,attr:{name:id() +'_email'}\">\r\n                <button data-bind=\"click:contacts_update,attr:{name:id() +'_update'}\">Save</button><button data-bind=\"click:contacts_delete,attr:{name:id() +'_delete'}\">Delete</button>\r\n    \t\t</div>\r\n        </div>\r\n </body>\r\n</html>", "name" : "testPage", "_search_keys" : [         "544447760",    "<html>\r\n<head>\r\n    <title>Contacts</title>\r\n    <meta charset=\"utf-8\">\r\n\t<link rel=\"stylesheet\" href=\"contacts-style.css\">\r\n</head>\r\n\t<body>\r\n        <form data-bind=\"submit:contacts_create\">\r\n        <div class=\"new-contact\">\r\n\t\t\t<input name=\"fn\" class=\"fn\" type=\"text\" placeholder=\"Contact Name\" data-bind=\"value:contacts_Name\">\r\n\t\t\t<input name=\"phone\" class=\"phone\" type=\"text\" placeholder=\"Phone Number\" data-bind=\"value:contacts_phoneNumber\">\r\n\t\t\t<input name=\"email\" class=\"email\" type=\"text\" placeholder=\"Email Address\" data-bind=\"value:contacts_emailAddress\">\r\n            <button type=\"submit\" value=\"Save\">Add record</button>    \r\n\t    </div>\r\n        </form>\r\n\t    <div id=\"contacts\" data-bind=\"foreach:contacts\">\r\n        \t<div class=\"vcard\" data-bind=\"attr:{id:id}\">\r\n    \t\t\t<input class=\"fn\" data-bind=\"value:Name,attr:{name:id() +'_fn'}\">\r\n    \t\t\t<input class=\"phone\" data-bind=\"value:phoneNumber,attr:{name:id() +'_phone'}\">\r\n                <input class=\"email\" data-bind=\"value:emailAddress,attr:{name:id() +'_email'}\">\r\n                <button data-bind=\"click:contacts_update,attr:{name:id() +'_update'}\">Save</button><button data-bind=\"click:contacts_delete,attr:{name:id() +'_delete'}\">Delete</button>\r\n    \t\t</div>\r\n        </div>\r\n </body>\r\n</html>" ] }
+		var testPage = { "id" : "testId", "html" : "<html>\r\n<head>\r\n    <title>Contacts</title>\r\n    <meta charset=\"utf-8\">\r\n\t<link rel=\"stylesheet\" href=\"contacts-style.css\">\r\n <script src=\"http://testdrive.local-concussionjs.com/concussion.js\"></script> </head>\r\n\t<body>\r\n        <form data-bind=\"submit:contacts_create\">\r\n        <div class=\"new-contact\">\r\n\t\t\t<input name=\"fn\" class=\"fn\" type=\"text\" placeholder=\"Contact Name\" data-bind=\"value:contacts_Name\">\r\n\t\t\t<input name=\"phone\" class=\"phone\" type=\"text\" placeholder=\"Phone Number\" data-bind=\"value:contacts_phoneNumber\">\r\n\t\t\t<input name=\"email\" class=\"email\" type=\"text\" placeholder=\"Email Address\" data-bind=\"value:contacts_emailAddress\">\r\n            <button type=\"submit\" value=\"Save\">Add record</button>    \r\n\t    </div>\r\n        </form>\r\n\t    <div id=\"contacts\" data-bind=\"foreach:contacts\">\r\n        \t<div class=\"vcard\" data-bind=\"attr:{id:id}\">\r\n    \t\t\t<input class=\"fn\" data-bind=\"value:Name,attr:{name:id() +'_fn'}\">\r\n    \t\t\t<input class=\"phone\" data-bind=\"value:phoneNumber,attr:{name:id() +'_phone'}\">\r\n                <input class=\"email\" data-bind=\"value:emailAddress,attr:{name:id() +'_email'}\">\r\n                <button data-bind=\"click:contacts_update,attr:{name:id() +'_update'}\">Save</button><button data-bind=\"click:contacts_delete,attr:{name:id() +'_delete'}\">Delete</button>\r\n    \t\t</div>\r\n        </div>\r\n </body>\r\n</html>", "name" : "testPage", "_search_keys" : [         "544447760",    "<html>\r\n<head>\r\n    <title>Contacts</title>\r\n    <meta charset=\"utf-8\">\r\n\t<link rel=\"stylesheet\" href=\"contacts-style.css\">\r\n</head>\r\n\t<body>\r\n        <form data-bind=\"submit:contacts_create\">\r\n        <div class=\"new-contact\">\r\n\t\t\t<input name=\"fn\" class=\"fn\" type=\"text\" placeholder=\"Contact Name\" data-bind=\"value:contacts_Name\">\r\n\t\t\t<input name=\"phone\" class=\"phone\" type=\"text\" placeholder=\"Phone Number\" data-bind=\"value:contacts_phoneNumber\">\r\n\t\t\t<input name=\"email\" class=\"email\" type=\"text\" placeholder=\"Email Address\" data-bind=\"value:contacts_emailAddress\">\r\n            <button type=\"submit\" value=\"Save\">Add record</button>    \r\n\t    </div>\r\n        </form>\r\n\t    <div id=\"contacts\" data-bind=\"foreach:contacts\">\r\n        \t<div class=\"vcard\" data-bind=\"attr:{id:id}\">\r\n    \t\t\t<input class=\"fn\" data-bind=\"value:Name,attr:{name:id() +'_fn'}\">\r\n    \t\t\t<input class=\"phone\" data-bind=\"value:phoneNumber,attr:{name:id() +'_phone'}\">\r\n                <input class=\"email\" data-bind=\"value:emailAddress,attr:{name:id() +'_email'}\">\r\n                <button data-bind=\"click:contacts_update,attr:{name:id() +'_update'}\">Save</button><button data-bind=\"click:contacts_delete,attr:{name:id() +'_delete'}\">Delete</button>\r\n    \t\t</div>\r\n        </div>\r\n </body>\r\n</html>" ] }
 		var testObject = {"fields" : [    {       "name" : "Name" },       {       "name" : "phoneNumber" },       {       "name" : "emailAddress" } ], "children" : [ ], "name" : "id_testId_contacts", "type" : "array", "varname" : "contacts" };
 		nta.createEntry(testPage,"pages",function(status,objs){
 			console.log(JSON.stringify(objs));
@@ -77,26 +81,33 @@ function cleanUp()
 		});
 	});	
 }
-
+//cleanUp();
 setUp();
 
-browser.visit("http://testdrive.concussionjs.com/getPage?id=testId&pagename=testPage",function (e, browser) {
+browser.visit("http://testdrive.local-concussionjs.com/getPage?id=testId&pagename=testPage",function (e, browser) {
 	if (browser.error )
     		console.dir("Errors reported:", browser.errors);
   // Fill first name, email and submit form
-      contactsForm = browser.document.querySelector("[id^='contacts']");
-      deleteButtonsArr = contactsForm.querySelectorAll("[name*='_delete']");
-      preAddCount = deleteButtonsArr.length;
+  	//browser.localStorage("http://testdrive.local-concussionjs.com").setItem("sessionId","testId");
+    console.log("before: " + browser.localStorage("testdrive.local-concussionjs.com").getItem("sessionId"));  
+  	console.log("cookie:" + browser.cookies().dump());
 
-      browser.
+  	browser.wait(5000, function(){
+  		console.log("after: " + browser.localStorage("http://testdrive.local-concussionjs.com").getItem("sessionId"));
+      	contactsForm = browser.document.querySelector("[id^='contacts']");
+      	deleteButtonsArr = contactsForm.querySelectorAll("[name*='_delete']");
+      	preAddCount = deleteButtonsArr.length;
+
+      	browser.
       	fill("fn", startFn).
       	fill("email", startEmail).
     	pressButton("Add record", function() {
+ 			//browser.resources.dump();
      		assert.ok(browser.success);
      		assert.equal(browser.text("title"), "Contacts");
      		console.log("***after add record***");
 			contactsForm = browser.document.querySelector("[id^='contacts']");
-						
+			//browser.resources.dump();			
 			// testing add
 			vcards = contactsForm.querySelectorAll("[class*='vcard']");
 			console.log("vcards length: ",vcards.length);
@@ -104,7 +115,7 @@ browser.visit("http://testdrive.concussionjs.com/getPage?id=testId&pagename=test
 			console.log("email: ", vcards[vcards.length-1].querySelector("[class*='email']").value);
 			assert.equal(startEmail, vcards[vcards.length-1].querySelector("[class*='email']").value);
 			assert.equal(startFn, vcards[vcards.length-1].querySelector("[class*='fn']").value)
-			
+			browser.resources.dump();
 			// setup update buttons array
 			updateButtonsArr = contactsForm.querySelectorAll("[name*='_update']");
 			updateButton = updateButtonsArr[updateButtonsArr.length-1];
@@ -144,8 +155,8 @@ browser.visit("http://testdrive.concussionjs.com/getPage?id=testId&pagename=test
 					cleanUp();
 				});
 			});
-
 			console.log("Success");
 			
-   		})
+   		});
+	});
 });
